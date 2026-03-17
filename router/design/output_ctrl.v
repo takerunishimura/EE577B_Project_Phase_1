@@ -224,7 +224,7 @@ always @(*) begin
     end
 
 
-//output logic block
+//output logic 
 
 /*
 notice polarity seems flipped here, but external router transmission happens

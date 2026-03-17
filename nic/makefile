@@ -41,9 +41,9 @@
 
 
 # top level module
-TOP = tb_clock
+TOP = tb_cardinal_nic
 TOP_SYN = tb_syn
-DESIGN_NAME = frequency_divider_by3
+DESIGN_NAME = cardinal_nic
 
 # List of the design files
 DESIGN_FILES = ./design/*.v

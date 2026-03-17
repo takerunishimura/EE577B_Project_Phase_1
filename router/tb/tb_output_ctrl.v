@@ -1,3 +1,4 @@
+`timescale 1ns/10ps
 module tb_output_ctrl;
 
 reg clk, reset;
