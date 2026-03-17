@@ -41,12 +41,12 @@
 
 
 # top level module
-TOP = tb_clock
+TOP = tb_gold_mesh
 TOP_SYN = tb_syn
-DESIGN_NAME = frequency_divider_by3
+DESIGN_NAME = gold_mesh
 
 # List of the design files
-DESIGN_FILES = ./design/*.v
+DESIGN_FILES = ./design/*.v ../router/design/*.v
 NETLIST_FILES = ./netlist/*.v
 
 # List of the testbench files
