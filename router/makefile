@@ -43,7 +43,7 @@
 # top level module
 TOP = tb_output_ctrl
 TOP_SYN = tb_syn
-DESIGN_NAME = output_ctrl
+DESIGN_NAME = gold_router
 
 # List of the design files
 DESIGN_FILES = ./design/*.v

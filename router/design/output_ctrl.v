@@ -9,7 +9,7 @@ input [63:0] data_N, data_S, data_E, data_W, data_PE;
 input polarity;
 input forward_N, forward_S, forward_E, forward_W, forward_PE;
 input ready_out;
-output reg grant_N, grant_S, grant_W, grant_E, grant_PE;
+output reg grant_N, grant_S, grant_E, grant_W, grant_PE;
 output [63:0] data_out;
 output send_out;
 
