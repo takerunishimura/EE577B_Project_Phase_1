@@ -41,9 +41,9 @@
 
 
 # top level module
-TOP = tb_clock
+TOP = tb_output_ctrl
 TOP_SYN = tb_syn
-DESIGN_NAME = frequency_divider_by3
+DESIGN_NAME = output_ctrl
 
 # List of the design files
 DESIGN_FILES = ./design/*.v
