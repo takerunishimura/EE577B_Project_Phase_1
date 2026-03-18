@@ -238,29 +238,7 @@ wire nic_so_33, nic_ro_33; wire [63:0] nic_do_33;
 wire nic_si_33, nic_ri_33; wire [63:0] nic_di_33;
 wire nic_polarity_33;
 */
-//instantiations
-//node00
-gold_router router00 (
-    .clk(clk),
-    .reset(reset),
-    .polarity(node00_polarity),
-    // North
-    .nsi(1'b0), .nri(), .ndi(64'd0),
-    .nso(), .nro(1'b1), .ndo(),
-    // South
-    .ssi(sn_si_10_00), .sri(sn_ri_10_00), .sdi(sn_di_10_00),
-    .sso(ns_si_00_10), .sro(ns_ri_00_10), .sdo(ns_di_00_10),
-    
-    // East
-    .esi(we_si_01_00), .eri(we_ri_01_00), .edi(we_di_01_00),
-    .eso(ew_si_00_01), .ero(ew_ri_00_01), .edo(ew_di_00_01),
-    // West
-    .wsi(1'b0), .wri(), .wdi(64'd0),
-    .wso(), .wro(1'b1), .wdo(),
-    // PE
-    .pesi(node00_pesi), .peri(node00_peri), .pedi(node00_pedi),
-    .peso(node00_peso), .pero(node00_pero), .pedo(node00_pedo)
-);
+
 /*
 cardinal_nic nic00 (
     .clk(clk),
@@ -281,21 +259,45 @@ cardinal_nic nic00 (
     .net_polarity(nic_polarity_00)
 );
 */
+
+//instantiations
+//node00
+gold_router router00 (
+    .clk(clk),
+    .reset(reset),
+    .polarity(node00_polarity),
+    // North - boundary
+    .nsi(1'b0), .nri(), .ndi(64'd0),
+    .nso(), .nro(1'b1), .ndo(),
+    // South - connects to node10
+    .ssi(sn_si_10_00), .sri(sn_ri_10_00), .sdi(sn_di_10_00),
+    .sso(ns_si_00_10), .sro(ns_ri_00_10), .sdo(ns_di_00_10),
+    // East - connects to node01
+    .esi(we_si_01_00), .eri(we_ri_01_00), .edi(we_di_01_00),
+    .eso(ew_si_00_01), .ero(ew_ri_00_01), .edo(ew_di_00_01),
+    // West - boundary
+    .wsi(1'b0), .wri(), .wdi(64'd0),
+    .wso(), .wro(1'b1), .wdo(),
+    // PE
+    .pesi(node00_pesi), .peri(node00_peri), .pedi(node00_pedi),
+    .peso(node00_peso), .pero(node00_pero), .pedo(node00_pedo)
+);
+
 //node01
 gold_router router01 (
     .clk(clk),
     .reset(reset),
     .polarity(node01_polarity),
-    // North
+    // North - boundary
     .nsi(1'b0), .nri(), .ndi(64'd0),
     .nso(), .nro(1'b1), .ndo(),
-    // South
+    // South - connects to node11
     .ssi(sn_si_11_01), .sri(sn_ri_11_01), .sdi(sn_di_11_01),
     .sso(ns_si_01_11), .sro(ns_ri_01_11), .sdo(ns_di_01_11),
-    // East
+    // East - connects to node02
     .esi(we_si_02_01), .eri(we_ri_02_01), .edi(we_di_02_01),
     .eso(ew_si_01_02), .ero(ew_ri_01_02), .edo(ew_di_01_02),
-    // West
+    // West - connects to node00
     .wsi(ew_si_00_01), .wri(ew_ri_00_01), .wdi(ew_di_00_01),
     .wso(we_si_01_00), .wro(we_ri_01_00), .wdo(we_di_01_00),
     // PE
@@ -308,16 +310,16 @@ gold_router router02 (
     .clk(clk),
     .reset(reset),
     .polarity(node02_polarity),
-    // North
+    // North - boundary
     .nsi(1'b0), .nri(), .ndi(64'd0),
     .nso(), .nro(1'b1), .ndo(),
-    // South
+    // South - connects to node12
     .ssi(sn_si_12_02), .sri(sn_ri_12_02), .sdi(sn_di_12_02),
     .sso(ns_si_02_12), .sro(ns_ri_02_12), .sdo(ns_di_02_12),
-    // East
+    // East - connects to node03
     .esi(we_si_03_02), .eri(we_ri_03_02), .edi(we_di_03_02),
     .eso(ew_si_02_03), .ero(ew_ri_02_03), .edo(ew_di_02_03),
-    // West
+    // West - connects to node01
     .wsi(ew_si_01_02), .wri(ew_ri_01_02), .wdi(ew_di_01_02),
     .wso(we_si_02_01), .wro(we_ri_02_01), .wdo(we_di_02_01),
     // PE
@@ -330,16 +332,16 @@ gold_router router03 (
     .clk(clk),
     .reset(reset),
     .polarity(node03_polarity),
-    // North
+    // North - boundary
     .nsi(1'b0), .nri(), .ndi(64'd0),
     .nso(), .nro(1'b1), .ndo(),
-    // South
+    // South - connects to node13
     .ssi(sn_si_13_03), .sri(sn_ri_13_03), .sdi(sn_di_13_03),
     .sso(ns_si_03_13), .sro(ns_ri_03_13), .sdo(ns_di_03_13),
-    // East
+    // East - boundary
     .esi(1'b0), .eri(), .edi(64'd0),
     .eso(), .ero(1'b1), .edo(),
-    // West
+    // West - connects to node02
     .wsi(ew_si_02_03), .wri(ew_ri_02_03), .wdi(ew_di_02_03),
     .wso(we_si_03_02), .wro(we_ri_03_02), .wdo(we_di_03_02),
     // PE
@@ -352,16 +354,16 @@ gold_router router10 (
     .clk(clk),
     .reset(reset),
     .polarity(node10_polarity),
-    // North
-    .nsi(sn_si_10_00), .nri(sn_ri_10_00), .ndi(sn_di_10_00),
-    .nso(ns_si_00_10), .nro(ns_ri_00_10), .ndo(ns_di_00_10),
-    // South
+    // North - connects to node00
+    .nsi(ns_si_00_10), .nri(ns_ri_00_10), .ndi(ns_di_00_10),
+    .nso(sn_si_10_00), .nro(sn_ri_10_00), .ndo(sn_di_10_00),
+    // South - connects to node20
     .ssi(sn_si_20_10), .sri(sn_ri_20_10), .sdi(sn_di_20_10),
     .sso(ns_si_10_20), .sro(ns_ri_10_20), .sdo(ns_di_10_20),
-    // East
+    // East - connects to node11
     .esi(we_si_11_10), .eri(we_ri_11_10), .edi(we_di_11_10),
     .eso(ew_si_10_11), .ero(ew_ri_10_11), .edo(ew_di_10_11),
-    // West
+    // West - boundary
     .wsi(1'b0), .wri(), .wdi(64'd0),
     .wso(), .wro(1'b1), .wdo(),
     // PE
@@ -374,16 +376,16 @@ gold_router router11 (
     .clk(clk),
     .reset(reset),
     .polarity(node11_polarity),
-    // North
-    .nsi(sn_si_11_01), .nri(sn_ri_11_01), .ndi(sn_di_11_01),
-    .nso(ns_si_01_11), .nro(ns_ri_01_11), .ndo(ns_di_01_11),
-    // South
+    // North - connects to node01
+    .nsi(ns_si_01_11), .nri(ns_ri_01_11), .ndi(ns_di_01_11),
+    .nso(sn_si_11_01), .nro(sn_ri_11_01), .ndo(sn_di_11_01),
+    // South - connects to node21
     .ssi(sn_si_21_11), .sri(sn_ri_21_11), .sdi(sn_di_21_11),
     .sso(ns_si_11_21), .sro(ns_ri_11_21), .sdo(ns_di_11_21),
-    // East
+    // East - connects to node12
     .esi(we_si_12_11), .eri(we_ri_12_11), .edi(we_di_12_11),
     .eso(ew_si_11_12), .ero(ew_ri_11_12), .edo(ew_di_11_12),
-    // West
+    // West - connects to node10
     .wsi(ew_si_10_11), .wri(ew_ri_10_11), .wdi(ew_di_10_11),
     .wso(we_si_11_10), .wro(we_ri_11_10), .wdo(we_di_11_10),
     // PE
@@ -396,16 +398,16 @@ gold_router router12 (
     .clk(clk),
     .reset(reset),
     .polarity(node12_polarity),
-    // North
-    .nsi(sn_si_12_02), .nri(sn_ri_12_02), .ndi(sn_di_12_02),
-    .nso(ns_si_02_12), .nro(ns_ri_02_12), .ndo(ns_di_02_12),
-    // South
+    // North - connects to node02
+    .nsi(ns_si_02_12), .nri(ns_ri_02_12), .ndi(ns_di_02_12),
+    .nso(sn_si_12_02), .nro(sn_ri_12_02), .ndo(sn_di_12_02),
+    // South - connects to node22
     .ssi(sn_si_22_12), .sri(sn_ri_22_12), .sdi(sn_di_22_12),
     .sso(ns_si_12_22), .sro(ns_ri_12_22), .sdo(ns_di_12_22),
-    // East
+    // East - connects to node13
     .esi(we_si_13_12), .eri(we_ri_13_12), .edi(we_di_13_12),
     .eso(ew_si_12_13), .ero(ew_ri_12_13), .edo(ew_di_12_13),
-    // West
+    // West - connects to node11
     .wsi(ew_si_11_12), .wri(ew_ri_11_12), .wdi(ew_di_11_12),
     .wso(we_si_12_11), .wro(we_ri_12_11), .wdo(we_di_12_11),
     // PE
@@ -418,16 +420,16 @@ gold_router router13 (
     .clk(clk),
     .reset(reset),
     .polarity(node13_polarity),
-    // North
-    .nsi(sn_si_13_03), .nri(sn_ri_13_03), .ndi(sn_di_13_03),
-    .nso(ns_si_03_13), .nro(ns_ri_03_13), .ndo(ns_di_03_13),
-    // South
+    // North - connects to node03
+    .nsi(ns_si_03_13), .nri(ns_ri_03_13), .ndi(ns_di_03_13),
+    .nso(sn_si_13_03), .nro(sn_ri_13_03), .ndo(sn_di_13_03),
+    // South - connects to node23
     .ssi(sn_si_23_13), .sri(sn_ri_23_13), .sdi(sn_di_23_13),
     .sso(ns_si_13_23), .sro(ns_ri_13_23), .sdo(ns_di_13_23),
-    // East
+    // East - boundary
     .esi(1'b0), .eri(), .edi(64'd0),
     .eso(), .ero(1'b1), .edo(),
-    // West
+    // West - connects to node12
     .wsi(ew_si_12_13), .wri(ew_ri_12_13), .wdi(ew_di_12_13),
     .wso(we_si_13_12), .wro(we_ri_13_12), .wdo(we_di_13_12),
     // PE
@@ -440,16 +442,16 @@ gold_router router20 (
     .clk(clk),
     .reset(reset),
     .polarity(node20_polarity),
-    // North
-    .nsi(sn_si_20_10), .nri(sn_ri_20_10), .ndi(sn_di_20_10),
-    .nso(ns_si_10_20), .nro(ns_ri_10_20), .ndo(ns_di_10_20),
-    // South
+    // North - connects to node10
+    .nsi(ns_si_10_20), .nri(ns_ri_10_20), .ndi(ns_di_10_20),
+    .nso(sn_si_20_10), .nro(sn_ri_20_10), .ndo(sn_di_20_10),
+    // South - connects to node30
     .ssi(sn_si_30_20), .sri(sn_ri_30_20), .sdi(sn_di_30_20),
     .sso(ns_si_20_30), .sro(ns_ri_20_30), .sdo(ns_di_20_30),
-    // East
+    // East - connects to node21
     .esi(we_si_21_20), .eri(we_ri_21_20), .edi(we_di_21_20),
     .eso(ew_si_20_21), .ero(ew_ri_20_21), .edo(ew_di_20_21),
-    // West
+    // West - boundary
     .wsi(1'b0), .wri(), .wdi(64'd0),
     .wso(), .wro(1'b1), .wdo(),
     // PE
@@ -462,16 +464,16 @@ gold_router router21 (
     .clk(clk),
     .reset(reset),
     .polarity(node21_polarity),
-    // North
-    .nsi(sn_si_21_11), .nri(sn_ri_21_11), .ndi(sn_di_21_11),
-    .nso(ns_si_11_21), .nro(ns_ri_11_21), .ndo(ns_di_11_21),
-    // South
+    // North - connects to node11
+    .nsi(ns_si_11_21), .nri(ns_ri_11_21), .ndi(ns_di_11_21),
+    .nso(sn_si_21_11), .nro(sn_ri_21_11), .ndo(sn_di_21_11),
+    // South - connects to node31
     .ssi(sn_si_31_21), .sri(sn_ri_31_21), .sdi(sn_di_31_21),
     .sso(ns_si_21_31), .sro(ns_ri_21_31), .sdo(ns_di_21_31),
-    // East
+    // East - connects to node22
     .esi(we_si_22_21), .eri(we_ri_22_21), .edi(we_di_22_21),
     .eso(ew_si_21_22), .ero(ew_ri_21_22), .edo(ew_di_21_22),
-    // West
+    // West - connects to node20
     .wsi(ew_si_20_21), .wri(ew_ri_20_21), .wdi(ew_di_20_21),
     .wso(we_si_21_20), .wro(we_ri_21_20), .wdo(we_di_21_20),
     // PE
@@ -484,16 +486,16 @@ gold_router router22 (
     .clk(clk),
     .reset(reset),
     .polarity(node22_polarity),
-    // North
-    .nsi(sn_si_22_12), .nri(sn_ri_22_12), .ndi(sn_di_22_12),
-    .nso(ns_si_12_22), .nro(ns_ri_12_22), .ndo(ns_di_12_22),
-    // South
+    // North - connects to node12
+    .nsi(ns_si_12_22), .nri(ns_ri_12_22), .ndi(ns_di_12_22),
+    .nso(sn_si_22_12), .nro(sn_ri_22_12), .ndo(sn_di_22_12),
+    // South - connects to node32
     .ssi(sn_si_32_22), .sri(sn_ri_32_22), .sdi(sn_di_32_22),
     .sso(ns_si_22_32), .sro(ns_ri_22_32), .sdo(ns_di_22_32),
-    // East
+    // East - connects to node23
     .esi(we_si_23_22), .eri(we_ri_23_22), .edi(we_di_23_22),
     .eso(ew_si_22_23), .ero(ew_ri_22_23), .edo(ew_di_22_23),
-    // West
+    // West - connects to node21
     .wsi(ew_si_21_22), .wri(ew_ri_21_22), .wdi(ew_di_21_22),
     .wso(we_si_22_21), .wro(we_ri_22_21), .wdo(we_di_22_21),
     // PE
@@ -506,16 +508,16 @@ gold_router router23 (
     .clk(clk),
     .reset(reset),
     .polarity(node23_polarity),
-    // North
-    .nsi(sn_si_23_13), .nri(sn_ri_23_13), .ndi(sn_di_23_13),
-    .nso(ns_si_13_23), .nro(ns_ri_13_23), .ndo(ns_di_13_23),
-    // South
+    // North - connects to node13
+    .nsi(ns_si_13_23), .nri(ns_ri_13_23), .ndi(ns_di_13_23),
+    .nso(sn_si_23_13), .nro(sn_ri_23_13), .ndo(sn_di_23_13),
+    // South - connects to node33
     .ssi(sn_si_33_23), .sri(sn_ri_33_23), .sdi(sn_di_33_23),
     .sso(ns_si_23_33), .sro(ns_ri_23_33), .sdo(ns_di_23_33),
-    // East
+    // East - boundary
     .esi(1'b0), .eri(), .edi(64'd0),
     .eso(), .ero(1'b1), .edo(),
-    // West
+    // West - connects to node22
     .wsi(ew_si_22_23), .wri(ew_ri_22_23), .wdi(ew_di_22_23),
     .wso(we_si_23_22), .wro(we_ri_23_22), .wdo(we_di_23_22),
     // PE
@@ -528,16 +530,16 @@ gold_router router30 (
     .clk(clk),
     .reset(reset),
     .polarity(node30_polarity),
-    // North
-    .nsi(sn_si_30_20), .nri(sn_ri_30_20), .ndi(sn_di_30_20),
-    .nso(ns_si_20_30), .nro(ns_ri_20_30), .ndo(ns_di_20_30),
-    // South
+    // North - connects to node20
+    .nsi(ns_si_20_30), .nri(ns_ri_20_30), .ndi(ns_di_20_30),
+    .nso(sn_si_30_20), .nro(sn_ri_30_20), .ndo(sn_di_30_20),
+    // South - boundary
     .ssi(1'b0), .sri(), .sdi(64'd0),
     .sso(), .sro(1'b1), .sdo(),
-    // East
+    // East - connects to node31
     .esi(we_si_31_30), .eri(we_ri_31_30), .edi(we_di_31_30),
     .eso(ew_si_30_31), .ero(ew_ri_30_31), .edo(ew_di_30_31),
-    // West
+    // West - boundary
     .wsi(1'b0), .wri(), .wdi(64'd0),
     .wso(), .wro(1'b1), .wdo(),
     // PE
@@ -550,16 +552,16 @@ gold_router router31 (
     .clk(clk),
     .reset(reset),
     .polarity(node31_polarity),
-    // North
-    .nsi(sn_si_31_21), .nri(sn_ri_31_21), .ndi(sn_di_31_21),
-    .nso(ns_si_21_31), .nro(ns_ri_21_31), .ndo(ns_di_21_31),
-    // South
+    // North - connects to node21
+    .nsi(ns_si_21_31), .nri(ns_ri_21_31), .ndi(ns_di_21_31),
+    .nso(sn_si_31_21), .nro(sn_ri_31_21), .ndo(sn_di_31_21),
+    // South - boundary
     .ssi(1'b0), .sri(), .sdi(64'd0),
     .sso(), .sro(1'b1), .sdo(),
-    // East
+    // East - connects to node32
     .esi(we_si_32_31), .eri(we_ri_32_31), .edi(we_di_32_31),
     .eso(ew_si_31_32), .ero(ew_ri_31_32), .edo(ew_di_31_32),
-    // West
+    // West - connects to node30
     .wsi(ew_si_30_31), .wri(ew_ri_30_31), .wdi(ew_di_30_31),
     .wso(we_si_31_30), .wro(we_ri_31_30), .wdo(we_di_31_30),
     // PE
@@ -572,16 +574,16 @@ gold_router router32 (
     .clk(clk),
     .reset(reset),
     .polarity(node32_polarity),
-    // North
-    .nsi(sn_si_32_22), .nri(sn_ri_32_22), .ndi(sn_di_32_22),
-    .nso(ns_si_22_32), .nro(ns_ri_22_32), .ndo(ns_di_22_32),
-    // South
+    // North - connects to node22
+    .nsi(ns_si_22_32), .nri(ns_ri_22_32), .ndi(ns_di_22_32),
+    .nso(sn_si_32_22), .nro(sn_ri_32_22), .ndo(sn_di_32_22),
+    // South - boundary
     .ssi(1'b0), .sri(), .sdi(64'd0),
     .sso(), .sro(1'b1), .sdo(),
-    // East
+    // East - connects to node33
     .esi(we_si_33_32), .eri(we_ri_33_32), .edi(we_di_33_32),
     .eso(ew_si_32_33), .ero(ew_ri_32_33), .edo(ew_di_32_33),
-    // West
+    // West - connects to node31
     .wsi(ew_si_31_32), .wri(ew_ri_31_32), .wdi(ew_di_31_32),
     .wso(we_si_32_31), .wro(we_ri_32_31), .wdo(we_di_32_31),
     // PE
@@ -594,16 +596,16 @@ gold_router router33 (
     .clk(clk),
     .reset(reset),
     .polarity(node33_polarity),
-    // North
-    .nsi(sn_si_33_23), .nri(sn_ri_33_23), .ndi(sn_di_33_23),
-    .nso(ns_si_23_33), .nro(ns_ri_23_33), .ndo(ns_di_23_33),
-    // South
+    // North - connects to node23
+    .nsi(ns_si_23_33), .nri(ns_ri_23_33), .ndi(ns_di_23_33),
+    .nso(sn_si_33_23), .nro(sn_ri_33_23), .ndo(sn_di_33_23),
+    // South - boundary
     .ssi(1'b0), .sri(), .sdi(64'd0),
     .sso(), .sro(1'b1), .sdo(),
-    // East
+    // East - boundary
     .esi(1'b0), .eri(), .edi(64'd0),
     .eso(), .ero(1'b1), .edo(),
-    // West
+    // West - connects to node32
     .wsi(ew_si_32_33), .wri(ew_ri_32_33), .wdi(ew_di_32_33),
     .wso(we_si_33_32), .wro(we_ri_33_32), .wdo(we_di_33_32),
     // PE

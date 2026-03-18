@@ -27,7 +27,8 @@ wire [63:0] current_buffer;
 wire buffer_has_data;
 
 assign current_buffer = polarity ? odd_buffer : even_buffer;
-assign data_out = {current_buffer[63:56], current_buffer[55:52] >> 1, current_buffer[51:48] >> 1, current_buffer[47:0]};
+//assign data_out = {current_buffer[63:56], current_buffer[55:52] >> 1, current_buffer[51:48] >> 1, current_buffer[47:0]};
+assign data_out = (hopX[0] == 1) ? {current_buffer[63:56], current_buffer[55:52] >> 1, current_buffer[51:48], current_buffer[47:0]} : {current_buffer[63:56], current_buffer[55:52], current_buffer[51:48] >> 1, current_buffer[47:0]};
 //hop count is unary coded, header processing at each hop is a right shift operation
 assign hopX = current_buffer[55:52];
 assign hopY = current_buffer[51:48];
