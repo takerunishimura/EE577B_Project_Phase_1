@@ -36,7 +36,7 @@ uniquify ;
 link ;
 
 # Create a clock with period of 5.
-create_clock -name clk -period 5.0 -waveform [list 0 2.5] [get_ports clk]
+create_clock -name clk -period 4.0 -waveform [list 0 2.0] [get_ports clk]
 
 # Setting timing constraints for combinational logic.
 # Specifying maximum delay from inputs to outputs

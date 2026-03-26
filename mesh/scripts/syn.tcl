@@ -21,7 +21,7 @@ set link_library [list * gscl45nm.db dw_foundation.sldb standard.sldb]
 
 # Reading source verilog file.
 # copy your verilog file into ./src/ before synthesis.
-read_verilog ./src/${design_name}.v ;
+read_verilog [glob ./src/*.v] ;
 
 # Setting $design_name as current working design.
 # Use this command before setting any constraints.
@@ -36,7 +36,7 @@ uniquify ;
 link ;
 
 # Create a clock with period of 5.
-create_clock -name clk -period 5.0 -waveform [list 0 2.5] [get_ports clk]
+create_clock -name clk -period 4.0 -waveform [list 0 2.0] [get_ports clk]
 
 # Setting timing constraints for combinational logic.
 # Specifying maximum delay from inputs to outputs
