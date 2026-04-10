@@ -42,7 +42,7 @@
 
 # top level module
 TOP = tb_gold_mesh
-TOP_SYN = tb_syn
+TOP_SYN = tb_syn_gold_mesh
 DESIGN_NAME = gold_mesh
 
 # List of the design files

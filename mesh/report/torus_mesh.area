@@ -1,0 +1,30 @@
+ 
+****************************************
+Report : area
+Design : torus_mesh
+Version: Y-2026.03
+Date   : Tue Apr  7 15:57:09 2026
+****************************************
+
+Library(s) Used:
+
+    gscl45nm (File: /tools/PDK/NCSU45PDK/FreePDK45/osu_soc/lib/files/gscl45nm.db)
+
+Number of ports:                        56098
+Number of nets:                        223478
+Number of cells:                       168916
+Number of combinational cells:         147748
+Number of sequential cells:             20976
+Number of macros/black boxes:               0
+Number of buf/inv:                      57092
+Number of references:                      16
+
+Combinational area:             316401.115058
+Buf/Inv area:                    81446.074954
+Noncombinational area:          167348.621887
+Macro/Black Box area:                0.000000
+Net Interconnect area:      undefined  (No wire load specified)
+
+Total cell area:                483749.736945
+Total area:                 undefined
+1

@@ -1,4 +1,4 @@
-Loading db file '/home/scf-22/ee577/NCSU45PDK/FreePDK45/osu_soc/lib/files/gscl45nm.db'
+Loading db file '/tools/PDK/NCSU45PDK/FreePDK45/osu_soc/lib/files/gscl45nm.db'
 Information: Propagating switching activity (low effort zero delay simulation). (PWR-6)
 Warning: Design has unannotated primary inputs. (PWR-414)
 Warning: Design has unannotated sequential cell outputs. (PWR-415)
@@ -7,14 +7,14 @@ Warning: Design has unannotated sequential cell outputs. (PWR-415)
 Report : power
         -analysis_effort low
 Design : gold_mesh
-Version: K-2015.06-SP5-5
-Date   : Wed Mar 25 16:07:00 2026
+Version: Y-2026.03
+Date   : Tue Apr  7 16:04:29 2026
 ****************************************
 
 
 Library(s) Used:
 
-    gscl45nm (File: /home/scf-22/ee577/NCSU45PDK/FreePDK45/osu_soc/lib/files/gscl45nm.db)
+    gscl45nm (File: /tools/PDK/NCSU45PDK/FreePDK45/osu_soc/lib/files/gscl45nm.db)
 
 
 Operating Conditions: typical   Library: gscl45nm
@@ -30,12 +30,17 @@ Power-specific unit information :
     Leakage Power Units = 1nW
 
 
-  Cell Internal Power  =  77.8243 mW   (90%)
-  Net Switching Power  =   8.2159 mW   (10%)
-                         ---------
-Total Dynamic Power    =  86.0402 mW  (100%)
+Attributes
+----------
+i - Including register clock pin internal power
 
-Cell Leakage Power     =   2.4162 mW
+
+  Cell Internal Power  =  77.5307 mW   (91%)
+  Net Switching Power  =   8.1383 mW    (9%)
+                         ---------
+Total Dynamic Power    =  85.6690 mW  (100%)
+
+Cell Leakage Power     =   2.0893 mW
 
 
                  Internal         Switching           Leakage            Total
@@ -44,10 +49,10 @@ Power Group      Power            Power               Power              Power  
 io_pad             0.0000            0.0000            0.0000            0.0000  (   0.00%)
 memory             0.0000            0.0000            0.0000            0.0000  (   0.00%)
 black_box          0.0000            0.0000            0.0000            0.0000  (   0.00%)
-clock_network      0.0000            0.0000            0.0000            0.0000  (   0.00%)
-register          74.7706            0.1692        1.1532e+06           76.0927  (  86.02%)
+clock_network     73.7625            0.0000            0.0000           73.7625  (  84.05%)  i
+register           0.9920            0.1690        1.1532e+06            2.3138  (   2.64%)
 sequential         0.0000            0.0000            0.0000            0.0000  (   0.00%)
-combinational      3.0541            8.0467        1.2630e+06           12.3637  (  13.98%)
+combinational      2.7768            7.9694        9.3607e+05           11.6822  (  13.31%)
 --------------------------------------------------------------------------------------------------
-Total             77.8247 mW         8.2159 mW     2.4162e+06 nW        88.4565 mW
+Total             77.5313 mW         8.1384 mW     2.0893e+06 nW        87.7585 mW
 1
