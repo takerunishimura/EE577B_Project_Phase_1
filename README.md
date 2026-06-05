@@ -16,7 +16,7 @@ A Cardinal Network Interface Component (NIC) is also implemented to handle commu
 
 - **Cardinal Router** — 5-port router with credit-based flow control and round-robin arbitration
 - **XY Dimension-Order Routing** — packets route in the X direction first, then Y, guaranteeing deadlock-free delivery
-- **4×4 Mesh** — 16 routers instantiated and wired in a mesh topology (`gold_mesh.v`)
+- **4×4 Mesh** — 16 routers instantiated and wired in a mesh topology
 - **Cardinal NIC** — bridges the processor-side interface to the router network side
 - Synthesizable Verilog coding style throughout
 
@@ -25,18 +25,40 @@ A Cardinal Network Interface Component (NIC) is also implemented to handle commu
 ## File Structure
 
 ```
-Phase_1/
+EE577B_Project_Phase_1/
 ├── router/
-│   ├── gold_router.v          # Top-level router design
-│   └── [supporting modules]   # Input buffers, arbiter, crossbar, etc.
-├── gold_mesh.v                # 4×4 mesh interconnect
+│   ├── design/        # Cardinal router .v design files
+│   ├── tb/            # Router-level testbench
+│   ├── include/
+│   ├── scripts/
+│   ├── src/
+│   ├── netlist/
+│   ├── report/
+│   ├── reports/
+│   └── work/
+├── mesh/
+│   ├── design/        # 4×4 mesh interconnect .v files
+│   ├── tb/            # Mesh-level testbench
+│   ├── include/
+│   ├── scripts/
+│   ├── src/
+│   ├── netlist/
+│   ├── report/
+│   ├── reports/
+│   └── work/
 ├── nic/
-│   └── cardinal_nic.v         # Network Interface Component
-├── tb/
-│   ├── tb_gold_router.v       # Router-level testbench
-│   └── tb_gold_mesh.v         # Mesh-level testbench
-└── sim/
-    └── [simulation logs]
+│   ├── design/        # Cardinal NIC .v design files
+│   ├── tb/            # NIC testbench
+│   ├── include/
+│   ├── scripts/
+│   ├── src/
+│   ├── netlist/
+│   ├── report/
+│   ├── reports/
+│   └── work/
+├── Phase_1_Group_14_Report.pdf
+├── .gitignore
+└── README.md
 ```
 
 ---
